@@ -42,7 +42,7 @@ export const MainScreen = () => {
             <AppText style={styles.error}>{error} </AppText>
             <AppButton onPress={loadTodos}>Повторить</AppButton>
         </View>
-    }
+    } 
     let content = (
         <View style={{ width: diviceWidth }}>
             <FlatList

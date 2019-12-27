@@ -75,14 +75,29 @@ export const TodoState = ({ children }) => {
         } catch (error) {
             showError('Что то пошло не так....')
             console.log(error)
-        }finally{
+        } finally {
             hideLoader()
         }
     }
 
-    const updateTodo = (id, title) => dispatch({ type: UPDATE_TODO, id, title })
+    const updateTodo = async (id, title) => {
+        clearError()
+        try {
+            await fetch(``, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'aplication/json' },
+                body: JSON.stringify({ title })
+            })
+            dispatch({ type: UPDATE_TODO, id, title })
+        } catch (error) {
+            showError('Что то пошло не так....')
+            console.log(error)
+        }
+    }
 
-    const showLoader = () => dispatch({ type: SHOW_LOADER })
+    const showLoader = () => {
+        dispatch({ type: SHOW_LOADER })
+    }
 
     const hideLoader = () => dispatch({ type: HIDE_LOADER })
 

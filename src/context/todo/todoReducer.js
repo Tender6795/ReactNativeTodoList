@@ -38,6 +38,6 @@ const handlers = {
 
 
 export const todoReducer = (state, action) => {
-    const handler = handlers[action.type] || handlers.DEFAULT
+    const handler = handlers[action.type] || handlers.DEFAULT 
     return handler(state, action)
 } 
