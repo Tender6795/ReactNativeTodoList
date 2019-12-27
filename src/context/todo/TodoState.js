@@ -25,7 +25,7 @@ export const TodoState = ({ children }) => {
     const [state, dispatch] = useReducer(todoReducer, initialState)
 
     const addTodo = async title => {
-        const responce = await fetch('https://rn-todo-app-c79d8.firebaseio.com/todos.json', {
+        const responce = await fetch('', {
             method: "POST",
             headers: { 'Content-Type': 'aplication/json' },
             body: JSON.stringify({ title })
@@ -48,8 +48,12 @@ export const TodoState = ({ children }) => {
                 {
                     text: 'Удалить',
                     style: 'destructive',
-                    onPress: () => {
+                    onPress: async () => {
                         changeScreen(null)
+                        await fetch(``,{
+                            method:'DELETE',
+                            headers: { 'Content-Type': 'aplication/json' }
+                        })
                         dispatch({ type: REMOVE_TODO, id })
                     },
                 }
