@@ -34,5 +34,5 @@ const styles = StyleSheet.create({
     text: {
         color: Platform.OS==="ios"?THEME.MAIN_COLOR:'#fff',
         fontSize: 20
-    }
+    } 
 })
