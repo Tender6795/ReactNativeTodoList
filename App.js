@@ -4,7 +4,7 @@ import { AppLoading } from 'expo'
 
 import { MainLayout } from './src/MainLayout';
 import { TodoState } from './src/context/todo/TodoState';
-
+import { ScreenState } from './src/context/screen/ScreenState'
 
 
 async function loadApplication() {
@@ -20,15 +20,17 @@ export default function App() {
 
   if (!isReady) {
     return <AppLoading
-      startAsync={loadApplication} 
+      startAsync={loadApplication}
       onError={err => console.log(err)}
       onFinish={() => setIsReady(true)}
     />
   }
 
   return (
-    <TodoState>
-      <MainLayout />
-    </TodoState>
+    <ScreenState>
+      <TodoState>
+        <MainLayout />
+      </TodoState>
+    </ScreenState>
   );
 }
